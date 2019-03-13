@@ -14,6 +14,7 @@
 		7E39C5542237C0E200DC9110 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E39C5522237C0E200DC9110 /* LaunchScreen.storyboard */; };
 		7E39C55F2237C0E300DC9110 /* Telegram_chartsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E39C55E2237C0E300DC9110 /* Telegram_chartsTests.swift */; };
 		7E39C56A2237C0E300DC9110 /* Telegram_chartsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E39C5692237C0E300DC9110 /* Telegram_chartsUITests.swift */; };
+		7E39C5782237E5D300DC9110 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E39C5772237E5D300DC9110 /* ChartView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		7E39C5652237C0E300DC9110 /* Telegram_chartsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Telegram_chartsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E39C5692237C0E300DC9110 /* Telegram_chartsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Telegram_chartsUITests.swift; sourceTree = "<group>"; };
 		7E39C56B2237C0E300DC9110 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7E39C5772237E5D300DC9110 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				7E39C5502237C0E200DC9110 /* Assets.xcassets */,
 				7E39C5522237C0E200DC9110 /* LaunchScreen.storyboard */,
 				7E39C5552237C0E200DC9110 /* Info.plist */,
+				7E39C5772237E5D300DC9110 /* ChartView.swift */,
 			);
 			path = Telegram_charts;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			files = (
 				7E39C54C2237C0E000DC9110 /* ViewController.swift in Sources */,
 				7E39C54A2237C0E000DC9110 /* AppDelegate.swift in Sources */,
+				7E39C5782237E5D300DC9110 /* ChartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
