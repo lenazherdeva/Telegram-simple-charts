@@ -15,6 +15,7 @@
 		7E39C55F2237C0E300DC9110 /* Telegram_chartsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E39C55E2237C0E300DC9110 /* Telegram_chartsTests.swift */; };
 		7E39C56A2237C0E300DC9110 /* Telegram_chartsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E39C5692237C0E300DC9110 /* Telegram_chartsUITests.swift */; };
 		7E39C5782237E5D300DC9110 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E39C5772237E5D300DC9110 /* ChartView.swift */; };
+		7E54C3CB223AC5D400C578D4 /* chart_data.json in Resources */ = {isa = PBXBuildFile; fileRef = 7E54C3CA223AC5D400C578D4 /* chart_data.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		7E39C5692237C0E300DC9110 /* Telegram_chartsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Telegram_chartsUITests.swift; sourceTree = "<group>"; };
 		7E39C56B2237C0E300DC9110 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E39C5772237E5D300DC9110 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		7E54C3CA223AC5D400C578D4 /* chart_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chart_data.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				7E39C54D2237C0E000DC9110 /* Main.storyboard */,
 				7E39C5502237C0E200DC9110 /* Assets.xcassets */,
 				7E39C5522237C0E200DC9110 /* LaunchScreen.storyboard */,
+				7E54C3CA223AC5D400C578D4 /* chart_data.json */,
 				7E39C5552237C0E200DC9110 /* Info.plist */,
 				7E39C5772237E5D300DC9110 /* ChartView.swift */,
 			);
@@ -234,6 +237,7 @@
 			files = (
 				7E39C5542237C0E200DC9110 /* LaunchScreen.storyboard in Resources */,
 				7E39C5512237C0E200DC9110 /* Assets.xcassets in Resources */,
+				7E54C3CB223AC5D400C578D4 /* chart_data.json in Resources */,
 				7E39C54F2237C0E000DC9110 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
