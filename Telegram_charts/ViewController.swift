@@ -11,13 +11,21 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var ChartView: Chart!
+    var charts: [ChartData] = []
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ChartView.inputData = getData()
+        //ChartView.inputData = getData()
         //print(ChartView.inputData)
-        print("viewDidLoad")
+        //print("viewDidLoad")
+        do {
+            charts = try getDataFromFile()
+            print(charts)
+        } catch {
+            fatalError("Can't parse json data")
+        }
+    
     }
     
     private func getData()-> [DataEntry] {
@@ -35,23 +43,15 @@ class ViewController: UIViewController {
         return result
     }
     
-}
-
-private func getDataFromFile()-> [DataEntry] {
-    var result: [DataEntry] = []
-    if let path = Bundle.main.path(forResource: "chart_data", ofType: "json") {
-        do {
-            let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-            let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
-            if let jsonResult = jsonResult as? Dictionary<String, AnyObject>, let person = jsonResult["person"] as? [Any] {
-                // do stuff
-            }
-        } catch {
-            // handle error
+    func getDataFromFile() throws -> [ChartData] {
+        guard let url = Bundle.main.url(forResource: "chart_data", withExtension: "json") else {
+            fatalError("Can't find json file")
         }
-    }
-    
-    
-    return result
+        
+        let jsonData = try Data(contentsOf: url)
+        print("JSON", jsonData)
+        let chart = try JSONDecoder().decode([ChartData].self, from: jsonData)
+        return chart
+}
 }
 

@@ -75,7 +75,7 @@ import UIKit
     }
     
     override func layoutSubviews() {
-        print(inputData)
+        //print(inputData)
         scrollView.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
         scrollView.contentSize = CGSize(width: CGFloat(inputData!.count) * lineGap, height: self.frame.size.height)
         mainLayer.frame = CGRect(x: 0, y: 0, width: CGFloat(inputData!.count) * lineGap, height: self.frame.size.height)
@@ -84,7 +84,7 @@ import UIKit
         dataPoints = convertDataToPoints(data: inputData!)
         print("layoutSubviews")
         
-        print(dataPoints)
+        //print(dataPoints)
         
         self.drawChart()
     }
