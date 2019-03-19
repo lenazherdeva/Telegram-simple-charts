@@ -35,15 +35,13 @@ import UIKit
     
     private let scrollView: UIScrollView = UIScrollView()
     
-    // horizontal lines layer
-    //private let gridLayer: CALayer = CALayer()
-    
-    let lineGap: CGFloat = 60.0
-    let topSpace: CGFloat = 40.0
-    let bottomSpace: CGFloat = 40.0
     /// The top most horizontal line in the chart will be 10% higher than the highest value in the chart
     let topHorizontalLine: CGFloat = 110.0 / 100.0
     
+    // colors of y0, y1, y2..
+    //var colors = [String: String]()
+
+    var charts: [ChartData] = []
     
     // points on a dataLayer
     //private var dataPoints: [CGPoint]?
@@ -52,11 +50,12 @@ import UIKit
     var inputData: [DataEntry]?
     private var dataPoints: [CGPoint]?
     
-    
+    let topSpace: CGFloat = 15.0
+    let rightSpace: CGFloat = 10.0
+    let bottomSpace: CGFloat = 15.0
+    let leftSpace: CGFloat = 10.0
 
-    private var shapeLayer = CAShapeLayer()
-    
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -75,23 +74,19 @@ import UIKit
     }
     
     override func layoutSubviews() {
-        //print(inputData)
         scrollView.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
-        scrollView.contentSize = CGSize(width: CGFloat(inputData!.count) * lineGap, height: self.frame.size.height)
-        mainLayer.frame = CGRect(x: 0, y: 0, width: CGFloat(inputData!.count) * lineGap, height: self.frame.size.height)
+        scrollView.contentSize = CGSize(width: self.frame.size.width, height: self.frame.size.height)
+        mainLayer.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
         dataLayer.frame = CGRect(x: 0, y: topSpace, width: mainLayer.frame.width, height: mainLayer.frame.height - topSpace - bottomSpace)
         
-        dataPoints = convertDataToPoints(data: inputData!)
         print("layoutSubviews")
-        
-        //print(dataPoints)
-        
-        self.drawChart()
+    
+        self.drawLines(chart: charts[3])
     }
     
 
     
-    private func convertDataToPoints(data: [DataEntry])-> [CGPoint] {
+    /*private func convertDataToPoints(data: [DataEntry])-> [CGPoint] {
         print("convertData")
         if let max = data.max()?.value, let min = data.min()?.value {
             var result: [CGPoint] = []
@@ -105,10 +100,74 @@ import UIKit
             return result
         }
         return []
+    }*/
+    
+    private func drawLines(chart: ChartData, lowerValue: CGFloat = 0.0, upperValue: CGFloat = 1.0) {
+        let types = chart.types
+        let columns = chart.columns
+        let x = chart.columns["x"]!
+        let colors = chart.colors
+        
+        var dataTypes = [String]()
+        var labels = [String]()
+        for (key, value) in types {
+            print(key, value)
+            if value == "x" {
+                labels = getDatesFromInt(x: columns[key]!)
+            } else {
+                dataTypes.append(key)
+            }
+        }
+        
+        let lowerNum = Int(CGFloat(x.count) * lowerValue)
+        let upperNum = Int(CGFloat(x.count) * upperValue)
+        
+        let height = dataLayer.frame.height - topSpace - bottomSpace
+        let width = dataLayer.frame.width - leftSpace - rightSpace
+        
+        var minY = CGFloat(0)
+        var maxY = CGFloat(0)
+        for type in dataTypes {
+            let cur_minY = CGFloat(columns[type]!.min()!)
+            if cur_minY < minY {
+                minY = cur_minY
+            }
+            let cur_maxY = CGFloat(columns[type]!.max()!)
+            if cur_maxY > maxY {
+                maxY = cur_maxY
+            }
+        }
+    
+        let stepX = width / CGFloat(x.count - 1)
+        let rangeY = maxY - minY
+    
+        
+        for type in dataTypes {
+            let shapeLayer = CAShapeLayer()
+            let aPath = UIBezierPath()
+            let column = Array(columns[type]![lowerNum..<upperNum])
+            
+        
+            aPath.move(to:
+                CGPoint(x: leftSpace, y: topSpace + height * (maxY - CGFloat(column[0])) / rangeY)
+            )
+            
+            for i in 1..<columns[type]!.count {
+                let point = CGPoint(x:leftSpace +  CGFloat(i) * stepX,
+                                    y: topSpace + height * (maxY - CGFloat(column[i])) / rangeY)
+                aPath.addLine(to: point)
+            }
+            
+            shapeLayer.path = aPath.cgPath
+            shapeLayer.strokeColor = UIColor(hexString: colors[type]!).cgColor
+            shapeLayer.fillColor = UIColor.clear.cgColor
+            dataLayer.addSublayer(shapeLayer)
+            
+        }
     }
     
     
-    private func drawChart() {
+    /*private func drawChart() {
 
         let aPath = UIBezierPath()
         aPath.move(to: dataPoints![0])
@@ -117,11 +176,13 @@ import UIKit
             aPath.addLine(to: dataPoints![i])
         }
         shapeLayer.path = aPath.cgPath
+        //shapeLayer.strokeColor =
+        //shapeLayer.strokeColor = UIColor(hexString: colors["y0"]!).cgColor
         shapeLayer.strokeColor = UIColor.black.cgColor
         shapeLayer.fillColor = UIColor.clear.cgColor
         
         layer.addSublayer(shapeLayer)
-    }
+    }*/
 }
 
 

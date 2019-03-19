@@ -40,6 +40,3 @@ extension ChartData: Codable {
         self.columns = columns
     }
 }
-
-
-

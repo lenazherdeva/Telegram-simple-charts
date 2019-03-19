@@ -17,6 +17,7 @@
 		7E39C5782237E5D300DC9110 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E39C5772237E5D300DC9110 /* ChartView.swift */; };
 		7E54C3CB223AC5D400C578D4 /* chart_data.json in Resources */ = {isa = PBXBuildFile; fileRef = 7E54C3CA223AC5D400C578D4 /* chart_data.json */; };
 		7E54C3CD223BB88900C578D4 /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E54C3CC223BB88900C578D4 /* ChartData.swift */; };
+		7EF3D1A9223FFADD006A1367 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF3D1A8223FFADD006A1367 /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		7E39C5772237E5D300DC9110 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		7E54C3CA223AC5D400C578D4 /* chart_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chart_data.json; sourceTree = "<group>"; };
 		7E54C3CC223BB88900C578D4 /* ChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartData.swift; sourceTree = "<group>"; };
+		7EF3D1A8223FFADD006A1367 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,14 +106,15 @@
 			isa = PBXGroup;
 			children = (
 				7E39C5492237C0E000DC9110 /* AppDelegate.swift */,
-				7E39C54B2237C0E000DC9110 /* ViewController.swift */,
 				7E39C54D2237C0E000DC9110 /* Main.storyboard */,
 				7E39C5502237C0E200DC9110 /* Assets.xcassets */,
 				7E39C5522237C0E200DC9110 /* LaunchScreen.storyboard */,
 				7E54C3CA223AC5D400C578D4 /* chart_data.json */,
 				7E39C5552237C0E200DC9110 /* Info.plist */,
+				7E39C54B2237C0E000DC9110 /* ViewController.swift */,
 				7E39C5772237E5D300DC9110 /* ChartView.swift */,
 				7E54C3CC223BB88900C578D4 /* ChartData.swift */,
+				7EF3D1A8223FFADD006A1367 /* Utilities.swift */,
 			);
 			path = Telegram_charts;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				7E39C54C2237C0E000DC9110 /* ViewController.swift in Sources */,
 				7E39C54A2237C0E000DC9110 /* AppDelegate.swift in Sources */,
 				7E54C3CD223BB88900C578D4 /* ChartData.swift in Sources */,
+				7EF3D1A9223FFADD006A1367 /* Utilities.swift in Sources */,
 				7E39C5782237E5D300DC9110 /* ChartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
