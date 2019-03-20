@@ -35,26 +35,17 @@ import UIKit
     
     private let scrollView: UIScrollView = UIScrollView()
     
-    /// The top most horizontal line in the chart will be 10% higher than the highest value in the chart
-    let topHorizontalLine: CGFloat = 110.0 / 100.0
     
-    // colors of y0, y1, y2..
-    //var colors = [String: String]()
-
     var charts: [ChartData] = []
-    
-    // points on a dataLayer
-    //private var dataPoints: [CGPoint]?
-    
+
     // input data points
-    var inputData: [DataEntry]?
-    private var dataPoints: [CGPoint]?
+    //var inputData: [DataEntry]?
+    //private var dataPoints: [CGPoint]?
     
     let topSpace: CGFloat = 15.0
     let rightSpace: CGFloat = 10.0
     let bottomSpace: CGFloat = 15.0
     let leftSpace: CGFloat = 10.0
-
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -80,7 +71,6 @@ import UIKit
         dataLayer.frame = CGRect(x: 0, y: topSpace, width: mainLayer.frame.width, height: mainLayer.frame.height - topSpace - bottomSpace)
         
         print("layoutSubviews")
-    
         self.drawLines(chart: charts[3])
     }
     
@@ -161,6 +151,7 @@ import UIKit
             shapeLayer.path = aPath.cgPath
             shapeLayer.strokeColor = UIColor(hexString: colors[type]!).cgColor
             shapeLayer.fillColor = UIColor.clear.cgColor
+            shapeLayer.lineWidth = 2.0
             dataLayer.addSublayer(shapeLayer)
             
         }
@@ -183,6 +174,10 @@ import UIKit
         
         layer.addSublayer(shapeLayer)
     }*/
+}
+
+func numberOfSections(in tableView: UITableView) -> Int {
+    return 3
 }
 
 

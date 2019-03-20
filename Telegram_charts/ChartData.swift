@@ -16,6 +16,7 @@ struct ChartData {
     let columns: Columns
     let names: Strings
     let types: Strings
+    let isHidden: Bool
 }
 
 extension ChartData: Codable {
@@ -24,6 +25,7 @@ extension ChartData: Codable {
         colors = try meta.decode(Strings.self, forKey: .colors)
         names = try meta.decode(Strings.self, forKey: .names)
         types = try meta.decode(Strings.self, forKey: .types)
+        isHidden = false
         
         var columnsMeta = try meta.nestedUnkeyedContainer(forKey: .columns)
         var columns = Columns()

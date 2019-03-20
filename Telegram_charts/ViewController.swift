@@ -8,77 +8,51 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var ChartView: Chart!
-    var charts: [ChartData] = []
+    var numberOfCharts: Int = 0
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        print("viewDidLoad")
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return numberOfCharts
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CellIdentifier", for: indexPath)
+        return cell
+    }
+    
+    
+    @IBAction func goToChart(_ sender: Any) {
+        performSegue(withIdentifier: "goToChartViewCont", sender: self)
+    }
+    @IBOutlet weak var tableView: UITableView!
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         do {
-            //charts = try getDataFromFile()
-            ChartView.charts = try getDataFromFile()
-            //print(charts)
+            let destinationViewController = segue.destination as! ChartViewController
+            destinationViewController.charts = try getDataFromFile()
+            numberOfCharts = destinationViewController.charts.count
+            
         } catch {
             fatalError("Can't parse json data")
         }
-        //let returnedData = getDataFromChart(index: 3)
-        //ChartView.inputData = returnedData.data
-        //ChartView.colors = returnedData.color
     }
     
-    private func getDataFromChart(index: Int )-> (data: [DataEntry], color: Strings) {
-        let chart = charts[index]
-        let columns = chart.columns
-        var result: [DataEntry] = []
-        let x = columns["x"]!
-        let y0 = columns["y0"]!
-        let size = x.count
-        for i in 0..<size {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "d MMM"
-            var date = Date()
-            date.addTimeInterval(TimeInterval(x[i]))
-            result.append(DataEntry(value: y0[i], label: formatter.string(from: date)))
-        }
-        return (result, chart.colors)
-    }
-    
-    
-    
-    private func getData()-> [DataEntry] {
-        var result: [DataEntry] = []
-        for i in 0..<30 {
-            let value = Int(arc4random() % 100)
-            let formatter = DateFormatter()
-            formatter.dateFormat = "d MMM"
-            var date = Date()
-            date.addTimeInterval(TimeInterval(24*60*60*i))
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print("VIEW LOAD")
+        do {
+            var charts: [ChartData] = try getDataFromFile()
+            numberOfCharts = charts.count
+            print("number")
+            print(numberOfCharts)
             
-            result.append(DataEntry(value: value, label: formatter.string(from: date)))
+        } catch {
+            fatalError("Can't parse json data")
         }
-        return result
-    }
-    
-    func getDates() {
-        let chart = charts[0]
-        let columns = chart.columns
-        let y1 = columns["y1"]
-        let y0 = columns["y0"]
-        let x = columns["x"]
-    
-        var dates = [String]()
-        for i in 0..<x!.count {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "d MMM"
-            var date = Date()
-            date.addTimeInterval(TimeInterval(x![i]))
-            dates.append(formatter.string(from: date))
-        }
-        
-        print(dates)
+        print("viewDidLoad")
     }
     
     func getDataFromFile() throws -> [ChartData] {
@@ -90,3 +64,4 @@ class ViewController: UIViewController {
         return chart
     }
 }
+
