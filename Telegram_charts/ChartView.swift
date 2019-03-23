@@ -28,19 +28,15 @@ import UIKit
  class Chart: UIView {
  
     // contain dataLayer and pointsLayer
-    private let mainLayer: CALayer = CALayer()
+    let mainLayer: CALayer = CALayer()
     
     // layer with main graph==line
-    private let dataLayer: CALayer = CALayer()
+    let dataLayer: CALayer = CALayer()
     
-    private let scrollView: UIScrollView = UIScrollView()
-    
-    
+    let scrollView: UIScrollView = UIScrollView()
+        
     var charts: [ChartData] = []
-
-    // input data points
-    //var inputData: [DataEntry]?
-    //private var dataPoints: [CGPoint]?
+    var selectedGraph: Int = 0
     
     let topSpace: CGFloat = 15.0
     let rightSpace: CGFloat = 10.0
@@ -71,26 +67,8 @@ import UIKit
         dataLayer.frame = CGRect(x: 0, y: topSpace, width: mainLayer.frame.width, height: mainLayer.frame.height - topSpace - bottomSpace)
         
         print("layoutSubviews")
-        self.drawLines(chart: charts[3])
+        self.drawLines(chart: charts[selectedGraph])
     }
-    
-
-    
-    /*private func convertDataToPoints(data: [DataEntry])-> [CGPoint] {
-        print("convertData")
-        if let max = data.max()?.value, let min = data.min()?.value {
-            var result: [CGPoint] = []
-            let minMaxRange: CGFloat = CGFloat(max - min) * topHorizontalLine
-            
-            for i in 0..<data.count {
-                let height = dataLayer.frame.height * (1 - ((CGFloat(data[i].value) - CGFloat(min)) / minMaxRange))
-                let point = CGPoint(x: CGFloat(i)*lineGap + 40, y: height)
-                result.append(point)
-            }
-            return result
-        }
-        return []
-    }*/
     
     private func drawLines(chart: ChartData, lowerValue: CGFloat = 0.0, upperValue: CGFloat = 1.0) {
         let types = chart.types
@@ -154,30 +132,10 @@ import UIKit
             shapeLayer.lineWidth = 2.0
             dataLayer.addSublayer(shapeLayer)
             
+            
+            
         }
     }
-    
-    
-    /*private func drawChart() {
-
-        let aPath = UIBezierPath()
-        aPath.move(to: dataPoints![0])
-        
-        for i in 1..<dataPoints!.count {
-            aPath.addLine(to: dataPoints![i])
-        }
-        shapeLayer.path = aPath.cgPath
-        //shapeLayer.strokeColor =
-        //shapeLayer.strokeColor = UIColor(hexString: colors["y0"]!).cgColor
-        shapeLayer.strokeColor = UIColor.black.cgColor
-        shapeLayer.fillColor = UIColor.clear.cgColor
-        
-        layer.addSublayer(shapeLayer)
-    }*/
-}
-
-func numberOfSections(in tableView: UITableView) -> Int {
-    return 3
 }
 
 

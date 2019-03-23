@@ -115,9 +115,9 @@
 				7E39C5552237C0E200DC9110 /* Info.plist */,
 				7E39C54B2237C0E000DC9110 /* ViewController.swift */,
 				7E39C5772237E5D300DC9110 /* ChartView.swift */,
+				7EC8E007224259E700FF9D3C /* ChartViewController.swift */,
 				7E54C3CC223BB88900C578D4 /* ChartData.swift */,
 				7EF3D1A8223FFADD006A1367 /* Utilities.swift */,
-				7EC8E007224259E700FF9D3C /* ChartViewController.swift */,
 			);
 			path = Telegram_charts;
 			sourceTree = "<group>";

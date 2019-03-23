@@ -11,6 +11,12 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var numberOfCharts: Int = 0
+    let chartNames: [String] = ["Graph1", "Graph2", "Graph3", "Graph4", "Graph5"]
+    var charts: [ChartData] = []
+    var selectedGraph: Int = 0
+    
+    
+    @IBOutlet weak var tableView: UITableView!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return numberOfCharts
@@ -18,37 +24,29 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellIdentifier", for: indexPath)
+        cell.textLabel?.text = chartNames[indexPath.row]
         return cell
     }
     
-    
-    @IBAction func goToChart(_ sender: Any) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        selectedGraph = indexPath.row
         performSegue(withIdentifier: "goToChartViewCont", sender: self)
+        print(chartNames[indexPath.row])
+        
     }
-    @IBOutlet weak var tableView: UITableView!
-    
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        do {
-            let destinationViewController = segue.destination as! ChartViewController
-            destinationViewController.charts = try getDataFromFile()
-            numberOfCharts = destinationViewController.charts.count
-            
-        } catch {
-            fatalError("Can't parse json data")
-        }
+        let destinationViewController = segue.destination as! ChartViewController
+        destinationViewController.charts = charts
+        destinationViewController.selectedGraph = selectedGraph
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("VIEW LOAD")
         do {
-            var charts: [ChartData] = try getDataFromFile()
+            charts = try getDataFromFile()
             numberOfCharts = charts.count
-            print("number")
-            print(numberOfCharts)
-            
         } catch {
             fatalError("Can't parse json data")
         }

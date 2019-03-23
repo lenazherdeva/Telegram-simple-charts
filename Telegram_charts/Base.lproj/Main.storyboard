@@ -19,18 +19,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bq4-uN-X4w">
-                                <rect key="frame" x="0.0" y="50" width="375" height="400"/>
+                                <rect key="frame" x="0.0" y="90" width="375" height="400"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="400" id="ueZ-1y-4dY"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellIdentifier" id="1x4-yO-UL6">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellIdentifier" textLabel="ybB-AY-hnq" style="IBUITableViewCellStyleDefault" id="1x4-yO-UL6">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1x4-yO-UL6" id="oUm-vS-Cls">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ybB-AY-hnq">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -39,19 +48,11 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="xWU-Rd-fyK"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CZU-nK-GRz">
-                                <rect key="frame" x="147" y="546" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="goToChart:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u9q-z5-Li6"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Bq4-uN-X4w" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Ouy-tj-oIx"/>
-                            <constraint firstItem="Bq4-uN-X4w" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="k1N-ko-PCz"/>
+                            <constraint firstItem="Bq4-uN-X4w" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="70" id="k1N-ko-PCz"/>
                             <constraint firstItem="Bq4-uN-X4w" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zD4-zC-XtV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -75,27 +76,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZr-HF-jGD" customClass="Chart" customModule="Telegram_charts" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="375" height="300"/>
+                                <rect key="frame" x="0.0" y="135" width="375" height="350"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="MoU-0F-d3g"/>
+                                    <constraint firstAttribute="height" constant="350" id="MoU-0F-d3g"/>
                                 </constraints>
                             </containerView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u25-hu-ANa">
                                 <rect key="frame" x="54" y="183" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wI2-C0-o1A">
-                                <rect key="frame" x="157" y="525" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VY5-2s-EX3">
+                                <rect key="frame" x="25" y="40" width="50" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="12R-ix-Gg0"/>
+                                    <constraint firstAttribute="height" constant="45" id="ucH-Ai-ech"/>
+                                </constraints>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="60y-G8-6h8"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="Jgb-lk-Ur3"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="GZr-HF-jGD" firstAttribute="top" secondItem="acG-uQ-Jgo" secondAttribute="top" constant="30" id="cLQ-TA-G95"/>
+                            <constraint firstItem="VY5-2s-EX3" firstAttribute="top" secondItem="acG-uQ-Jgo" secondAttribute="top" constant="20" id="4JZ-po-cwU"/>
+                            <constraint firstItem="VY5-2s-EX3" firstAttribute="leading" secondItem="acG-uQ-Jgo" secondAttribute="leading" constant="25" id="Ejc-9e-tC9"/>
+                            <constraint firstItem="GZr-HF-jGD" firstAttribute="top" secondItem="VY5-2s-EX3" secondAttribute="bottom" constant="50" id="Obv-an-o3Q"/>
                             <constraint firstItem="GZr-HF-jGD" firstAttribute="leading" secondItem="acG-uQ-Jgo" secondAttribute="leading" id="dFK-7x-1Wp"/>
                             <constraint firstAttribute="trailing" secondItem="GZr-HF-jGD" secondAttribute="trailing" id="goQ-5P-2FE"/>
                         </constraints>
